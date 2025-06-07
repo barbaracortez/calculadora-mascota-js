@@ -1,15 +1,21 @@
-//Pedimos el nombre del usuario
-let nombre = prompt("¿Cómo te llamas?");
+document.getElementById("formulario").addEventListener("submit", function(e){
+    e.preventDefault(); 
 
-//Pedimos la edad de la mascota
-let edadMascota = prompt("¿Cuantos años tiene tu mascota");
+    const nombre = document.getElementById("nombre").value.trim();
+    const edadMascota = parseFloat(document.getElementById("edad").value);
 
-//Convertimos edad a número
-let edadHumana = edadMascota * 7;
+    if (nombre === "" || isNaN(edadMascota) || edadMascota < 0) {
+        alert("Por favor ingresa un nombre válido y una edad mayor o igual a 0.");
+        return;
+    }
 
-// Mostramos el resultado 
-alert("Hola "  +  nombre  + ", tu mascota tiene "+  edadHumana  + " años humanos. ");
-console.log("Resultado: " + edadHumana + "años humanos");
+    const edadHumana = edadMascota * 7;
+    const resultado = `Hola ${nombre}, tu mascota tiene aproximadamente ${edadHumana} años humanos.`;
+    
+    document.getElementById("resultado").textContent = resultado;
+
+    console.log("resultado:", resultado);
+})
 
 
 
